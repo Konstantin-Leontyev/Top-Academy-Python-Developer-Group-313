@@ -14,8 +14,9 @@ data = {
 }
 
 # Тут я пытаюсь понять где и зачем может пригодиться zip
-# for month in data:
-#     print(f'Общая прибыль в {month} = {data[month]['Total Sales'] - data[month]['Production Cost']}')
+print('Если пришел JSON\n')
+for month in data:
+    print(f'Общая прибыль в {month} = {data[month]['Total Sales'] - data[month]['Production Cost']}')
 
 # for month in data:
 #     total_sales = data[month]['Total Sales']
@@ -96,24 +97,26 @@ data = {
 #     # monthly_profit = total_sales - production_cost
 #     # print(f'Общая прибыль в {month} = {monthly_profit}')
 
-# #   Если в условии даны списки
-# month_list = ['January', 'February', 'March']
-# total_sales_list = [52_000.0, 51_000.0, 48_000.0]
-# production_cost_list = [46_800.0, 45_900.0, 43_200.0]
-#
-# # Поочередно собираем картеж из значений списков и упаковываем в список.
-# # Распаковываем список.
-# for month, total_sales, production_cost in zip(month_list, total_sales_list, production_cost_list):
-#     # Работаем с полученными элементами
-#     monthly_profit = total_sales - production_cost
-#     print(f'Общая прибыль в {month} = {monthly_profit}')
+# Если в условии даны списки
+print('\nЕсли в условии даны списки\n')
+month_list = ['January', 'February', 'March']
+total_sales_list = [52_000.0, 51_000.0, 48_000.0]
+production_cost_list = [46_800.0, 45_900.0, 43_200.0]
 
-#   Если в условии даны словари
+# Поочередно собираем картеж из значений списков и упаковываем в список.
+# Распаковываем список.
+for month, total_sales, production_cost in zip(month_list, total_sales_list, production_cost_list):
+    # Работаем с полученными элементами
+    monthly_profit = total_sales - production_cost
+    print(f'Общая прибыль в {month} = {monthly_profit}')
+
+# Если в условии даны словари
+print('\nЕсли в условии даны списки\n')
 dict1 = {'Month': 'January', 'Total sales': 52_000.0, 'Production cost': 46_800.0}
 dict2 = {'Month': 'February', 'Total sales': 51_000.0, 'Production cost': 45_900.0}
 dict3 = {'Month': 'March', 'Total sales': 48_000.0, 'Production cost': 43_200.0}
 
-dict4 = [dict1, dict2, dict3]
+lst = [dict1, dict2, dict3]
 
 # a, b, c = zip(dict1.values())  # ('January',) (52000.0,) (46800.0,)
 # a, b, c = list(zip(dict1.values()))  # January 52_000.0 46_800.0
@@ -121,5 +124,7 @@ dict4 = [dict1, dict2, dict3]
 #
 # print(a, b, c)
 
-for month, total_sales, production_cost in list(zip(dict1, dict2, dict3)):
-    print(month, total_sales, production_cost)
+for dct_ in lst:
+    month, total_sales, production_cost = dct_.values()
+    monthly_profit = total_sales - production_cost
+    print(f'Общая прибыль в {month} = {monthly_profit}')
