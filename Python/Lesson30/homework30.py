@@ -57,6 +57,7 @@ class Point3D:
         return Point3D(x, y, z)
 
     def __eq__(self, other):
+        """Сравнение двух классов Point3D."""
         if id(self) == id(other):
             return True
         if (
