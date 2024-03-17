@@ -64,9 +64,9 @@ class Point3D:
         if id(self) == id(other):
             return True
         if (
-                self.x == other.x
-                and self.y == other.y
-                and self.z == other.z
+            self.x == other.x
+            and self.y == other.y
+            and self.z == other.z
         ):
             return True
         return False
