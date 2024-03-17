@@ -21,11 +21,14 @@ class Point3D:
 
     def __repr__(self):
         """Метод строкового представления."""
+        # Если хотя бы одна из координат
+        # имеет дробное значение.
         if (isinstance(self.x, float)
             or isinstance(self.y, float)
-                or isinstance(self.z, float)):
+            or isinstance(self.z, float)
+        ):
             return f'({self.x:.1f}, {self.y:.1f}, {self.z:.1f})'
-
+        # Если все координаты целые числа
         return f'({self.x}, {self.y}, {self.z})'
 
     def __add__(self, other):
@@ -62,8 +65,8 @@ class Point3D:
             return True
         if (
                 self.x == other.x
-                and self.y - other.y
-                and self.z - other.z
+                and self.y == other.y
+                and self.z == other.z
         ):
             return True
         return False
@@ -92,10 +95,20 @@ print(f'Вычитание координат: {p1 - p2}')
 print(f'Умножение координат: {p1 * p2}')
 print(f'Деление координат: {p1 / p2}')
 # Демонстрация, что работает и точечная нотация
-# и доступ по ключу
+# и доступ по ключу.
 print(f'Равенство координат: {p1 == p2}\n'
       f'x = {p1.x} x1 = {p2["x"]}\n'
       f'y = {p1.y} y1 = {p2["y"]}\n'
       f'z = {p1.z} z1 = {p2["z"]}')
+# # Если сравниваемые точки это один и тот же объект.
+# p4 = p1
+# print(id(p1))
+# print(id(p4))
+# print(f'Равенство координат: {p1 == p4}')
+# Если точки имеют одинаковые координаты.
+# p5 = Point3D(12, 15, 18)
+# print(id(p1))
+# print(id(p5))
+# print(f'Равенство координат: {p1 == p5}')
 p1['x'] = 20
 print(f'Запись значения в координату x: {p1["x"]}')
